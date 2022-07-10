@@ -1,0 +1,12 @@
+<!-- journal/update_journal_form.html -->
+{% extends "journal/base.html" %}
+{% block content %}
+<h2>Update Journal</h2>
+<form method="post">
+   <div class="form-group">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Submit</button>
+   </div>
+</form>
+<a href="{% url 'deletejournal' journal.id %}"><button class="btn btn-danger" >Delete</button></a>
+{% endblock %}

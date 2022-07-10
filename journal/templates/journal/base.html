@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    {% block title %}
+    <title> MY Journal </title>
+     {% endblock %}
+    <p style="text-align:center;">
+    <img src="{% static 'journal/logo.png' %}" alt="My image">
+    </p>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+          crossorigin="anonymous">
+</head>
+<body>
+    <div class = "container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                {% block content %}
+                    <!--journal list page-->
+                {% endblock %}
+                <a href="{% url 'createjournal' %}"> <button type="button" class="btn btn-success"> Create </button> </a>
+                <a href="{% url 'journallist' %}"> <button type="button" class="btn btn-info"> Review </button> </a>
+            </div>
+         </div>
+     </div>
+    <br>
+    <p style="text-align:center;">
+    <img src="{% static 'journal/windrunners.jpg' %}" alt="My image">
+    </p>
+</html>

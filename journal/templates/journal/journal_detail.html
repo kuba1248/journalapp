@@ -1,0 +1,10 @@
+<!-- journal/update_journal_form.html -->
+{% extends "journal/base.html" %}
+{% block content %}
+<h3 class="mb-1"><b>{{ journal.title }}</b></h3>
+<small> {{ journal.date_created }}  </small>
+<p class="mb-1" style="color:darkblue"> {{ journal.description }} </p>
+
+<a href="{% url 'updatejournal' journal.id %}"><button class="btn btn-primary" >Update</button></a>
+<a href="{% url 'deletejournal' journal.id %}"><button class="btn btn-danger" >Delete</button></a>
+{% endblock %}

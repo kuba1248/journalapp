@@ -1,0 +1,36 @@
+{% extends "journal/base.html" %}
+{% load humanize %}
+{% block content %}
+<h2> <b>ALL JOURNALS </b> </h2>
+    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+    </div>
+<div>
+{% for journal in journal_list %}
+    <div class="list-group">
+        <a href="{% url 'journal_detail' journal.pk %}" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ journal.title }}</h5>
+                <small> {{ journal.date_created | naturaltime }}  </small>
+            </div>
+            <p class="mb-1" style="color:darkblue"> {{ journal.description | truncatechars:120 }} </p>
+        </a>
+    </div>
+{% endfor %}
+
+{% endblock %}
+</div>
